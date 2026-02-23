@@ -18,6 +18,9 @@ KB_LAB/
 │   ├── markdown/     # Documentação técnica em Markdown
 │   └── projects/     # Arquivos-fonte (ex: Visio)
 │
+├── source/
+│   └── main.py       # Arquivo principal do projeto
+│
 └── README.md
 ```
 
