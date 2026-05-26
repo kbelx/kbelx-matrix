@@ -8,20 +8,22 @@ Script simples e eficiente em **Python** para automatizar a criação da estrutu
 - **Flexibilidade:** Fácil de adaptar para o seu workflow pessoal.
 
 ---
-## 2 - Estrutura do Projeto (Repositório Atual)
+## 2 - Estrutura do Projeto
 Atualmente, o repositório está organizado da seguinte forma:
 ```bash
 KB_LAB/
 │
-├── doc/
-│   ├── pdf/          # Documentação exportada em PDF
-│   ├── markdown/     # Documentação técnica em Markdown
-│   └── projects/     # Arquivos-fonte (ex: Visio)
+├── doc/             # Documentação do projeto
 │
-├── source/
-│   └── main.py       # Arquivo principal do projeto
+├── include/         # Arquivos de cabeçalho ( .h )
 │
-└── README.md
+├── source/          # Arquivoc de origem ( .cpp )
+│
+├── tests/           # Arquivos de testes
+│
+├── CMakeLists.txt   # Arquvio de projeto e compilação
+│
+└── README.md        # Briefing do projeto
 ```
 
 ---
