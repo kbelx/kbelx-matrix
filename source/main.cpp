@@ -7,7 +7,6 @@ PROPOSITO:    Arquivo Principal do Projeto
 #include <format>
 #include <iostream>
 #include <string>
-#include <string_view>
 
 #include "cores.h"
 #include "validadores.h"
@@ -16,7 +15,7 @@ PROPOSITO:    Arquivo Principal do Projeto
 std::string solicitarNomeProjeto(){
     std::cout << std::format("Digite o {}nome{} do projeto: ", Cores::RED, Cores::RESET);
     std::string nomeProjeto {};
-    std::getline(std::cin >> std::ws, nomeProjeto);
+    std::getline(std::cin, nomeProjeto);
 
     return nomeProjeto;
 }
@@ -26,7 +25,10 @@ int main() {
     setlocale(LC_ALL, "pt-BR.UTF-8");
 
     std::string nome_projeto { solicitarNomeProjeto() };
-    validar_nomeProjeto(nome_projeto);
+    //std::cout << "Você digitou: " << nome_projeto << '\n';
+    if (!validar_nomeProjeto(nome_projeto)) {
+        return 1;
+    }
     //std::cout << "nome do projeto: " << nome_projeto << '\n';
 
     

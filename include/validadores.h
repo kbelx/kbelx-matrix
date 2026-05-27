@@ -3,6 +3,6 @@
 
 #include <string_view>
 
-void validar_nomeProjeto(std::string_view nome);
+bool validar_nomeProjeto(std::string_view nome);
 
 #endif

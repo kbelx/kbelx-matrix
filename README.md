@@ -1,7 +1,7 @@
 # KB_LAB
 
 ## 1 - Funcionalidades
-Script simples e eficiente em **Python** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical ou Masterização.
+Script em **C++** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical e/ou Masterização.
 
 - **Padronização:** Mantém todos os seus projetos com a mesma anatomia.
 - **Rapidez:** Cria toda a hierarquia de diretórios em segundos.
@@ -160,6 +160,6 @@ Isso mantém o histórico limpo, legível e profissional.
 
 | Ferramentas | Versão |
 | ----------- | ------ |
-| Python      | 3.x    |
+| C++         | 20     |
 | Git         | 2.x    |
 

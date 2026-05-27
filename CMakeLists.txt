@@ -32,7 +32,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 
 file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp"
 )
 
 #═══════════════════════════════════════════════════════════════════════════════
@@ -54,6 +54,10 @@ target_sources(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES})
 # Informa ao compilador onde procurar arquivos de cabeçalho (.hpp).
 # Boa prática: headers ficam separados na pasta "include/".
 target_include_directories(${PROJECT_NAME} PRIVATE include)
+
+if (WIN32)
+    target_link_libraries(${PROJECT_NAME} PRIVATE user32)
+endif()
 
 #═══════════════════════════════════════════════════════════════════════════════
 # 🚨 FLAGS DE COMPILAÇÃO (QUALIDADE DE CÓDIGO)
