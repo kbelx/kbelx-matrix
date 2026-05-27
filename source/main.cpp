@@ -1,6 +1,7 @@
 /*******************************************************************************
-DATA:         <25/maio/2026>
-PROPOSITO:    Arquivo Principal do Projeto
+- AUTOR:        Bruno Costa ( aka Kbelx_ ) 
+- DATA:         <25/maio/2026>
+- PROPOSITO:    Arquivo Principal do Projeto
 *******************************************************************************/
 
 #include <clocale>
@@ -8,7 +9,7 @@ PROPOSITO:    Arquivo Principal do Projeto
 #include <iostream>
 #include <string>
 
-#include "cores.h"
+#include "utils.h"
 #include "validadores.h"
 
 

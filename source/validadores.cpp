@@ -1,3 +1,9 @@
+/***********************************************************************************************************************
+- AUTOR:        Bruno Costa ( aka Kbelx_ ) 
+- DATA:         <26/maio/2026>
+- PROPOSITO:    Arquivo para validações
+***********************************************************************************************************************/
+
 #include <array>
 #include <cctype>
 #include <format>
@@ -5,23 +11,10 @@
 #include <string>
 #include <string_view>
 
-#if defined(_WIN32)
-    #define WIN32_LEAN_AND_MEAN
-    #include <windows.h>
-#endif
-
-#include "cores.h"
+#include "utils.h"
 #include "validadores.h"
 
-namespace SistemaOperacional {
-#if defined(_WIN32)
-    constexpr bool WINDOWS { true };
-    constexpr std::string_view NOME { "Windows" };
-#else
-    constexpr bool WINDOWS { false };
-    constexpr std::string_view NOME { "Linux/macOS" };
-#endif
-}
+//-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 namespace Proibidos {
     // Regras de nomes de arquivos no Windows.
@@ -37,39 +30,6 @@ namespace Proibidos {
     };
 }
 
-namespace InterfaceErro {
-#if defined(_WIN32)
-    std::wstring utf8_para_wide(std::string_view texto) {
-        if (texto.empty()) {
-            return {};
-        }
-
-        const auto tamanho_texto { static_cast<int>(texto.size()) };
-        const int tamanho_convertido {
-            MultiByteToWideChar(CP_UTF8, 0, texto.data(), tamanho_texto, nullptr, 0)
-        };
-
-        if (tamanho_convertido == 0) {
-            return L"Erro de validação.";
-        }
-
-        std::wstring resultado(static_cast<std::size_t>(tamanho_convertido), L'\0');
-        MultiByteToWideChar(CP_UTF8, 0, texto.data(), tamanho_texto, resultado.data(), tamanho_convertido);
-
-        return resultado;
-    }
-
-    void exibir_erro(std::string_view mensagem) {
-        const std::wstring mensagem_wide { utf8_para_wide(mensagem) };
-        MessageBoxW(nullptr, mensagem_wide.c_str(), L"ERRO DE VALIDAÇÃO", MB_OK | MB_ICONERROR);
-    }
-#else
-    void exibir_erro(std::string_view mensagem) {
-        std::cout << "[!!!]" << Cores::RED << " ERRO " << Cores::RESET << "[!!!]" << '\n';
-        std::cout << mensagem << '\n';
-    }
-#endif
-}
 
 // Vê se o nome é vazio
 bool validar_nomeVazio(std::string_view nome) {
@@ -98,10 +58,12 @@ bool validar_CharsProibidosWindows(std::string_view nome) {
     return contem_caractere_controle(nome);
 }
 
+
 // [LINUX/APPLE] Vê se o nome contém caracteres especiais
 bool validar_CharsProibidosPosix(std::string_view nome) {
     return nome.contains('/') || nome.contains('\0');
 }
+
 
 // [WINDOWS] Vê se o nome termina com espaço ou ponto
 bool validar_finalInvalidoWindows(std::string_view nome) {
