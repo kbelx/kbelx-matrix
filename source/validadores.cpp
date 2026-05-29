@@ -1,5 +1,5 @@
 /***********************************************************************************************************************
-- AUTOR:        Bruno Costa ( aka Kbelx_ ) 
+- AUTOR:        Bruno Costa ( aka Kbelx_ )
 - DATA:         <26/maio/2026>
 - PROPOSITO:    Arquivo para validações
 ***********************************************************************************************************************/
@@ -99,23 +99,18 @@ bool validar_nomeReservadoWindows(std::string_view nome) {
     return false;
 }
 
-// =-=-=-=-=-=--=-=-=-=-=-=-=-= [MAIN DO ARQUIVO] =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 bool validar_nomeProjeto(std::string_view nome) {
     bool nome_valido { true };
 
     std::cout << std::format("Validando nome para {}{}{}...\n", Cores::CYAN, SistemaOperacional::NOME, Cores::RESET);
 
-    // TESTE POP-UP
     if (validar_nomeVazio(nome)) {
         InterfaceErro::exibir_erro("Nome do projeto NÃO PODE estar vazio!");
         return false;
     }
 
-    // Verificar erros no S.O. Windows
     if constexpr (SistemaOperacional::WINDOWS) {
-
-        // 1 - Verificar se o nome TEM CARACTERES RESERVADOS 
         if (validar_CharsProibidosWindows(nome)) {
             InterfaceErro::exibir_erro(std::format(
                 "Nome do projeto NÃO PODE conter estes caracteres no Windows: {}\n\n"
@@ -125,13 +120,11 @@ bool validar_nomeProjeto(std::string_view nome) {
             nome_valido = false;
         }
 
-        // 2 - Verificar se o nome TEM INICIO/FINAL RESERVADOS
         if (validar_finalInvalidoWindows(nome)) {
             InterfaceErro::exibir_erro("Nome do projeto NÃO PODE começar ou terminar com espaço ou ponto no Windows.");
             nome_valido = false;
         }
 
-        // 3 - Verificar se o nome TEM NOMES RESERVADOS
         if (validar_nomeReservadoWindows(nome)) {
             InterfaceErro::exibir_erro(
                 "Nome do projeto NÃO PODE usar nome reservado do Windows.\n\n"
@@ -139,11 +132,7 @@ bool validar_nomeProjeto(std::string_view nome) {
             );
             nome_valido = false;
         }
-
-    // Verificar erros no S.O. Linux/Apple
     } else {
-
-        // 1 - Verificar se o nome TEM CARACTERES RESERVADOS 
         if (validar_CharsProibidosPosix(nome)) {
             InterfaceErro::exibir_erro("Nome do projeto NÃO PODE conter '/' ou caractere nulo neste sistema.");
             nome_valido = false;
