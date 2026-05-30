@@ -28,14 +28,14 @@ KB_LAB/
 
 ---
 ## 3 - Estrutura de Pastas Gerada pelo Script
-```Bash
+```powershell
 / 📂 NOME_DO_PROJETO
 │
 ├── 📁 01_AUDIO_FILES            # Matéria-prima do projeto
-│   ├── 🎤 RECORD                # Gravações originais (Raw)
+│   ├── 🎤 RECORD                # Gravações originais ( RAW )
 │   └── 🎹 SAMPLES               # Loops, One-shots e Sound Design
 │
-├── 📁 02_SESSION_FILES          # Arquivos de projeto (DAW)
+├── 📁 02_SESSION_FILES          # Arquivos de projeto ( DAW )
 │   ├── 🛠️ PRODUCER_SESSION      # Sessão principal de produção/arranjo
 │   ├── 🎚️ MIX_SESSION            # Sessão dedicada à mixagem
 │   └── 💿 MASTER_SESSION        # Sessão dedicada à masterização
@@ -43,7 +43,7 @@ KB_LAB/
 ├── 📁 03_BOUNCED_FILES           # Exportações e entregáveis
 │   ├── 📦 STEMS                 # Multitracks processadas/separadas
 │   ├── 📻 MIXING_EXPORTS        # Pré-masters e versões de mix
-│   ├── 🏁 MASTERING_EXPORTS     # Arquivos finalizados (WAV/MP3)
+│   ├── 🏁 MASTERING_EXPORTS     # Arquivos finalizados ( WAV/MP3 )
 │   ├── 🎸 INSTRUMENTAL          # Versões sem voz/backing tracks
 │   └── 🗑️ OBSOLETE              # Versões descartadas ou antigas
 │

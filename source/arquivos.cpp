@@ -29,5 +29,3 @@ bool criarDiretorioRaiz(const fs::path& nome_diretorio) {
     return fs::create_directories(nome_diretorio, erro) && !erro;
 }
 
-
-//bool criarSubdiretorios()
