@@ -4,6 +4,7 @@
 - PROPOSITO:    Arquivo de Utilidades para todo o projeto
 ***********************************************************************************************************************/
 
+#include <iostream>
 #include <string>
 #include <string_view>
 
@@ -44,8 +45,14 @@ namespace InterfaceErro {
     }
 #else
     void exibir_erro(std::string_view mensagem) {
-        std::cout << "[!!!]" << Cores::RED << " ERRO " << Cores::RESET << "[!!!]" << '\n';
         std::cout << mensagem << '\n';
     }
 #endif
+}
+
+
+namespace InterfaceSucesso {
+    void exibir_sucesso(std::string_view mensagem) {
+        std::cout << mensagem << '\n';
+    }
 }

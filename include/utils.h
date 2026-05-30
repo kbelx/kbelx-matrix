@@ -17,4 +17,8 @@ namespace InterfaceErro {
     void exibir_erro(std::string_view mensagem);
 }
 
+namespace InterfaceSucesso {
+    void exibir_sucesso(std::string_view mensagem);
+}
+
 #endif

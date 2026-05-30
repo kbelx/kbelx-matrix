@@ -10,7 +10,9 @@
 #include <string>
 
 #include "cores.h"
+#include "utils.h"
 #include "validadores.h"
+#include "arquivos.h"
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -30,15 +32,29 @@ int main() {
     std::string nome_projeto { solicitarNomeProjeto() };
 
     // 2 - Valida nome do projeto
-    validar_nomeProjeto(nome_projeto);
+    if (!validar_nomeProjeto(nome_projeto)){
+        std::cout << std::format("{}ERRO{}: Falha ao validar nome.", Cores::RED, Cores::RESET) << '\n';
+        return 1;
+        
+    } else {
 
-    // 3 - Cria diretório raiz
+        // 3 - Cria diretório raiz
+        if (!criarDiretorioRaiz(nome_projeto)) {
+            std::cout << std::format("{}ERRO{}: Falha ao criar a pasta {}.", Cores::RED, Cores::RESET, nome_projeto) << '\n';
+            return 1;
+        }
 
-    // 4 - Cria subpastas
+        InterfaceSucesso::exibir_sucesso(
+            std::format("{}SUCESSO{}: Pasta {} esta pronta.", Cores::GREEN, Cores::RESET, nome_projeto)
+        );
 
-    // 5 - gera "metadados.txt"
+        // 4 - Cria subpastas
+        
 
+        // 5 - gera "metadados.txt"
+        
 
+    }        
 
     
     
