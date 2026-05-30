@@ -3,16 +3,6 @@
 
 #include <string_view>
 
-namespace Cores {
-    extern const std::string_view RESET;
-    extern const std::string_view RED;
-    extern const std::string_view GREEN;
-    extern const std::string_view YELLOW;
-    extern const std::string_view BLUE;
-    extern const std::string_view CYAN;
-    extern const std::string_view GRAY;
-}
-
 namespace SistemaOperacional {
 #if defined(_WIN32)
     inline constexpr bool WINDOWS { true };

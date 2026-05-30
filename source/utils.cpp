@@ -4,7 +4,6 @@
 - PROPOSITO:    Arquivo de Utilidades para todo o projeto
 ***********************************************************************************************************************/
 
-#include <iostream>
 #include <string>
 #include <string_view>
 
@@ -16,16 +15,6 @@
 #include "utils.h"
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-namespace Cores {
-    const std::string_view RESET {"\033[m"};
-    const std::string_view RED {"\033[1;49;31m"};
-    const std::string_view GREEN {"\033[1;49;32m"};
-    const std::string_view YELLOW {"\033[1;49;33m"};
-    const std::string_view BLUE {"\033[1;49;34m"};
-    const std::string_view CYAN {"\033[1;49;35m"};
-    const std::string_view GRAY {"\033[1;49;90m"};
-}
 
 namespace InterfaceErro {
 #if defined(_WIN32)

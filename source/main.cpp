@@ -9,12 +9,12 @@
 #include <iostream>
 #include <string>
 
-#include "utils.h"
+#include "cores.h"
 #include "validadores.h"
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-std::string solicitarNomeProjeto(){
+inline std::string solicitarNomeProjeto(){
     std::cout << std::format("Digite o {}nome{} do projeto: ", Cores::RED, Cores::RESET);
     std::string nomeProjeto {};
     std::getline(std::cin, nomeProjeto);
@@ -30,9 +30,7 @@ int main() {
     std::string nome_projeto { solicitarNomeProjeto() };
 
     // 2 - Valida nome do projeto
-    if (!validar_nomeProjeto(nome_projeto)) {
-        return 1;
-    }
+    validar_nomeProjeto(nome_projeto);
 
     // 3 - Cria diretório raiz
 
