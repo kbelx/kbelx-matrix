@@ -4,12 +4,17 @@
 - PROPOSITO:    Arquivo para validações
 ***********************************************************************************************************************/
 
-#include <array>
-#include <cctype>
-#include <format>
+#include <cstddef>
 #include <iostream>
 #include <string>
 #include <string_view>
+#include <array>
+#include <cctype>
+#include <format>
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 #include "utils.h"
 #include "validadores.h"
@@ -45,7 +50,7 @@ bool contem_caractere_controle(std::string_view nome) {
             return true;
         }
     }
-
+    
     return false;
 }
 
@@ -54,8 +59,10 @@ bool contem_caractere_controle(std::string_view nome) {
 bool validar_CharsProibidosWindows(std::string_view nome) {
     for (char caractere : nome) {
         if (Proibidos::CARACTERES_WINDOWS.contains(caractere)) {
-            return true;}}
-    
+            return true;
+        }
+    }
+            
     return contem_caractere_controle(nome);
 }
 
@@ -101,11 +108,71 @@ bool validar_nomeReservadoWindows(std::string_view nome) {
 }
 
 
+void exibirMensagemValidacao(std::string_view SO, bool sucesso){
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
+    
+    std::string str_status = sucesso ? "Status: SUCESSO" : "Status: ERRO";
+    std::string str_status_colorido = sucesso 
+        ? std::format("Status: {}SUCESSO{}", Cores::GREEN, Cores::RESET)
+        : std::format("Status: {}ERRO{}", Cores::RED, Cores::RESET);
+
+    std::string linha1_pura { std::format("Validando nome para {}...", SO) };
+    std::string linha1_colorida { std::format("Validando nome para {}{}{}...", Cores::CYAN, SO, Cores::RESET) };
+    
+    size_t tamanho = linha1_pura.length();
+    
+    size_t espacos = (tamanho > str_status.length()) ? (tamanho - str_status.length()) : 0;
+    std::string padding(espacos, ' ');
+    std::string linha2_colorida = str_status_colorido + padding;
+
+    // 1. Topo da moldura: Canto esquerdo + linhas + Canto direito
+    std::cout << "╭";
+    for(size_t i{}; i < tamanho; ++i) {
+        std::cout << "─";
+    }
+    std::cout << "╮\n";
+    
+    // 2. Meio (duas linhas agora):
+    std::cout << "│" << linha1_colorida << "│\n";
+    std::cout << "│" << linha2_colorida << "│\n";
+    
+    // 3. Base da moldura: Canto esquerdo + linhas + Canto direito
+    std::cout << "╰";
+    for(size_t i{}; i < tamanho; ++i) {
+        std::cout << "─";
+    }
+    std::cout << "╯\n";
+}
+
+
 bool validar_nomeProjeto(std::string_view nome) {
     bool nome_valido { true };
 
-    std::cout << std::format("Validando nome para {}{}{}...\n", Cores::CYAN, SistemaOperacional::NOME, Cores::RESET);
+    // Executar validações silenciosamente primeiro para definir o status da moldura
+    if (validar_nomeVazio(nome)) {
+        nome_valido = false;
 
+    } else {
+        if constexpr (SistemaOperacional::WINDOWS) {
+            if (validar_CharsProibidosWindows(nome)) nome_valido = false;
+            if (validar_finalInvalidoWindows(nome)) nome_valido = false;
+            if (validar_nomeReservadoWindows(nome)) nome_valido = false;
+
+        } else {
+            if (validar_CharsProibidosPosix(nome)) nome_valido = false;
+        }
+
+        if (nome_valido && contem_caractere_controle(nome)) {
+            nome_valido = false;
+        }
+    }
+
+    // Exibir a moldura com o status incluído
+    exibirMensagemValidacao(SistemaOperacional::NOME, nome_valido);
+
+    // Agora sim, acionar as caixas de erro específicas se necessário
     if (validar_nomeVazio(nome)) {
         InterfaceErro::exibir_erro("Nome do projeto NÃO PODE estar vazio!");
         return false;
@@ -118,12 +185,10 @@ bool validar_nomeProjeto(std::string_view nome) {
                 "DICA: Use letras, numeros, espacos, '_' ou '-'.",
                 Proibidos::CARACTERES_WINDOWS
             ));
-            nome_valido = false;
         }
 
         if (validar_finalInvalidoWindows(nome)) {
             InterfaceErro::exibir_erro("Nome do projeto NÃO PODE começar ou terminar com espaço ou ponto no Windows.");
-            nome_valido = false;
         }
 
         if (validar_nomeReservadoWindows(nome)) {
@@ -131,18 +196,15 @@ bool validar_nomeProjeto(std::string_view nome) {
                 "Nome do projeto NÃO PODE usar nome reservado do Windows.\n\n"
                 "DICA: Evite nomes como CON, PRN, AUX, NUL, COM1 e LPT1."
             );
-            nome_valido = false;
         }
     } else {
         if (validar_CharsProibidosPosix(nome)) {
             InterfaceErro::exibir_erro("Nome do projeto NÃO PODE conter '/' ou caractere nulo neste sistema.");
-            nome_valido = false;
         }
     }
 
     if (nome_valido && contem_caractere_controle(nome)) {
         InterfaceErro::exibir_erro("Nome do projeto NÃO PODE conter caracteres de controle.");
-        nome_valido = false;
     }
 
     return nome_valido;

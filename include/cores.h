@@ -20,7 +20,7 @@ namespace Cores {
     inline constexpr string_view GREEN {"\033[1;49;32m"};
     inline constexpr string_view YELLOW {"\033[1;49;33m"};
     inline constexpr string_view BLUE {"\033[1;49;34m"};
-    inline constexpr string_view CYAN {"\033[1;49;35m"};
+    inline constexpr string_view CYAN {"\033[1;49;36m"};
     inline constexpr string_view GRAY {"\033[1;49;90m"};
 }
 
