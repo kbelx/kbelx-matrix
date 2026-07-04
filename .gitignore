@@ -23,7 +23,6 @@ Makefile
 *.ps1
 
 # IDEs e caches locais
-.vscode/
 .idea/
 
 # Bootstrap
