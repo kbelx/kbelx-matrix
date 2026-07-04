@@ -13,12 +13,11 @@
 #include <format>
 
 #ifdef _WIN32
-#include <windows.h>
+    #include <windows.h>
 #endif
 
-#include "utils.h"
+#include "constantes.h"
 #include "validadores.h"
-#include "cores.h"
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -113,37 +112,31 @@ void exibirMensagemValidacao(std::string_view SO, bool sucesso){
     SetConsoleOutputCP(CP_UTF8);
     #endif
     
-    std::string str_status = sucesso ? "Status: SUCESSO" : "Status: ERRO";
-    std::string str_status_colorido = sucesso 
-        ? std::format("Status: {}SUCESSO{}", Cores::GREEN, Cores::RESET)
-        : std::format("Status: {}ERRO{}", Cores::RED, Cores::RESET);
+    std::string linha1_pura { std::format("Sistema Operacional: {}...", SO) };
+    std::string linha1_colorida { std::format("Sistema Operacional: {}{}{}...", Cores::CYAN, SO, Cores::RESET) };
+    
+    std::string str_status = (sucesso ? "Status: SUCESSO" : "Status: ERRO");
 
-    std::string linha1_pura { std::format("Validando nome para {}...", SO) };
-    std::string linha1_colorida { std::format("Validando nome para {}{}{}...", Cores::CYAN, SO, Cores::RESET) };
+    std::string str_status_colorido = (sucesso ? 
+        std::format("Status: {}SUCESSO{}", Cores::GREEN, Cores::RESET) : 
+        std::format("Status: {}ERRO{}", Cores::RED, Cores::RESET));
     
+    
+    // formatação da moldura, baseada na formula: 
     size_t tamanho = linha1_pura.length();
-    
-    size_t espacos = (tamanho > str_status.length()) ? (tamanho - str_status.length()) : 0;
+    size_t espacos = ((tamanho > str_status.length()) ? (tamanho - str_status.length()) : 0);
     std::string padding(espacos, ' ');
-    std::string linha2_colorida = str_status_colorido + padding;
+    std::string linha2_colorida { str_status_colorido + padding };
 
     // 1. Topo da moldura: Canto esquerdo + linhas + Canto direito
-    std::cout << "╭";
-    for(size_t i{}; i < tamanho; ++i) {
-        std::cout << "─";
-    }
-    std::cout << "╮\n";
+    std::cout << "╭"; for(size_t i{}; i < tamanho; ++i) { std::cout << "─"; }std::cout << "╮\n";
     
     // 2. Meio (duas linhas agora):
     std::cout << "│" << linha1_colorida << "│\n";
     std::cout << "│" << linha2_colorida << "│\n";
     
     // 3. Base da moldura: Canto esquerdo + linhas + Canto direito
-    std::cout << "╰";
-    for(size_t i{}; i < tamanho; ++i) {
-        std::cout << "─";
-    }
-    std::cout << "╯\n";
+    std::cout << "╰"; for(size_t i{}; i < tamanho; ++i) { std::cout << "─"; }std::cout << "╯\n";
 }
 
 

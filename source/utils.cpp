@@ -4,20 +4,19 @@
 - PROPOSITO:    Arquivo de Utilidades para todo o projeto
 ***********************************************************************************************************************/
 
-#include <iostream>
+// #include <iostream>
 #include <string>
 #include <string_view>
 
-#if defined(_WIN32)
-    #define WIN32_LEAN_AND_MEAN
+#ifdef _WIN32
     #include <windows.h>
 #endif
 
-#include "utils.h"
+#include "constantes.h"
 
 //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-#if defined(_WIN32)
+#ifdef _WIN32
     namespace {
         std::wstring utf8_para_wide(std::string_view texto) {
             if (texto.empty()) {
@@ -46,8 +45,9 @@
     }
 #endif
 
+
 namespace InterfaceErro {
-    #if defined(_WIN32)
+    #ifdef _WIN32
         void exibir_erro(std::string_view mensagem) {
             exibir_caixa_mensagem(mensagem, L"ERRO DE VALIDAÇÃO", MB_ICONERROR);
         }
@@ -60,7 +60,7 @@ namespace InterfaceErro {
 
 
 namespace InterfaceSucesso {
-    #if defined(_WIN32)
+    #ifdef _WIN32
         void exibir_sucesso(std::string_view mensagem) {
             exibir_caixa_mensagem(mensagem, L"MENSAGEM DE CONCLUSÃO", MB_ICONASTERISK);
         }
