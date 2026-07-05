@@ -1,0 +1,10 @@
+{
+    "cmake.exportCompileCommandsFile": true,
+
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build",
+        "--query-driver=C:/msys64/ucrt64/bin/g++.exe"
+    ],
+
+    "C_Cpp.intelliSenseEngine": "disabled"
+}

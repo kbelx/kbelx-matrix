@@ -1,36 +1,45 @@
 # KB_LAB
 
 ## 1 - Funcionalidades
-Script simples e eficiente em **Python** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical ou Masterização.
+Script em **C++** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical e/ou Masterização.
 
 - **Padronização:** Mantém todos os seus projetos com a mesma anatomia.
-- **Rapidez:** Cria toda a hierarquia de diretórios em segundos.
+- **Rapidez:** Cria toda a hierarquia de diretórios em millisegundos.
 - **Flexibilidade:** Fácil de adaptar para o seu workflow pessoal.
 
 ---
-## 2 - Estrutura do Projeto (Repositório Atual)
-Atualmente, o repositório está organizado da seguinte forma:
+## 2 - Estrutura do Projeto
+Atualmente, o **repositório** está organizado da seguinte forma:
 ```bash
 KB_LAB/
+├── .antigravity/
+│    ├── context           # Biblioteca de "conhecimento estendido" para consulta do agente.
+│    └── spec              # Regras de negócio e comportamento.
 │
-├── doc/
-│   ├── pdf/          # Documentação exportada em PDF
-│   ├── markdown/     # Documentação técnica em Markdown
-│   └── projects/     # Arquivos-fonte (ex: Visio)
+├── .vscode/
+├── build/                 # Diretório gerado contendo o build do CMake
+├── doc/                   # Outras documentações do projeto
 │
-└── README.md
+├── include/               # Arquivos de cabeçalho ( .h )
+├── source/                # Arquivos de origem ( .cpp )
+├── tests/                 # Arquivos de testes
+│
+├── CMakeLists.txt         # Arquivo de projeto e compilação
+├── cpp_bootstrap.ps1      # Script PowerShell auxiliar para bootstrap
+├── .gitignore
+└── README.md              # Briefing do projeto
 ```
 
 ---
 ## 3 - Estrutura de Pastas Gerada pelo Script
-```Bash
+```powershell
 / 📂 NOME_DO_PROJETO
 │
 ├── 📁 01_AUDIO_FILES            # Matéria-prima do projeto
-│   ├── 🎤 RECORD                # Gravações originais (Raw)
+│   ├── 🎤 RECORD                # Gravações originais ( RAW )
 │   └── 🎹 SAMPLES               # Loops, One-shots e Sound Design
 │
-├── 📁 02_SESSION_FILES          # Arquivos de projeto (DAW)
+├── 📁 02_SESSION_FILES          # Arquivos de projeto ( DAW )
 │   ├── 🛠️ PRODUCER_SESSION      # Sessão principal de produção/arranjo
 │   ├── 🎚️ MIX_SESSION            # Sessão dedicada à mixagem
 │   └── 💿 MASTER_SESSION        # Sessão dedicada à masterização
@@ -38,12 +47,13 @@ KB_LAB/
 ├── 📁 03_BOUNCED_FILES           # Exportações e entregáveis
 │   ├── 📦 STEMS                 # Multitracks processadas/separadas
 │   ├── 📻 MIXING_EXPORTS        # Pré-masters e versões de mix
-│   ├── 🏁 MASTERING_EXPORTS     # Arquivos finalizados (WAV/MP3)
+│   ├── 🏁 MASTERING_EXPORTS     # Arquivos finalizados ( WAV/MP3 )
 │   ├── 🎸 INSTRUMENTAL          # Versões sem voz/backing tracks
 │   └── 🗑️ OBSOLETE              # Versões descartadas ou antigas
 │
 └── 📄 metadados.txt               # Informações técnicas e créditos
 ```
+*OBS: os emojis usados nos nomes acima são para fins explicativos, e não serão impressos após a criação da pasta do projeto.*
 
 ---
 ## 4 - Estrutura do Arquivo de Metadados
@@ -155,6 +165,31 @@ Isso mantém o histórico limpo, legível e profissional.
 
 | Ferramentas | Versão |
 | ----------- | ------ |
-| Python      | 3.x    |
+| C++         | 23     |
 | Git         | 2.x    |
+| CMake       | 3.20+  |
+
+---
+## 8 - Como Compilar e Executar
+
+Este projeto utiliza **CMake** como sistema de build. 
+
+### Para compilar o projeto:
+```bash
+# 1. Crie e acesse o diretório de build
+mkdir build && cd build
+
+# 2. Configure o projeto
+cmake ..
+
+# 3. Compile o executável
+cmake --build .
+```
+
+### Para executar:
+O `CMakeLists.txt` já possui um target especial para rodar a aplicação:
+```bash
+cmake --build . --target run
+```
+*No Windows, isso abrirá um novo terminal e manterá a janela aberta após a execução.*
 
