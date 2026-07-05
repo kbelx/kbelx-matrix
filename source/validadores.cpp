@@ -162,10 +162,8 @@ bool validar_nomeProjeto(std::string_view nome) {
         }
     }
 
-    // Exibir a moldura com o status incluído
     exibirMensagemValidacao(SistemaOperacional::NOME, nome_valido);
 
-    // Agora sim, acionar as caixas de erro específicas se necessário
     if (validar_nomeVazio(nome)) {
         InterfaceErro::exibir_erro("Nome do projeto NÃO PODE estar vazio!");
         return false;

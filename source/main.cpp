@@ -27,35 +27,39 @@ inline std::string solicitarNomeProjeto(){
 int main() {
     std::setlocale(LC_ALL, "pt-BR.UTF-8");
 
-    // 1 Solicita nome do projeto 
+    // 1 - Solicita nome do projeto 
     std::string nome_projeto { solicitarNomeProjeto() };
 
     // 2 - Valida nome do projeto
-    if (!validar_nomeProjeto(nome_projeto)){
+    if (!validar_nomeProjeto(nome_projeto)) {
+        std::cin.ignore();
         return 1;
-        
-    } else {
+    }
 
-        // 3 - Cria diretório raiz e Subpastas
-        if (!criarDiretorioRaiz(nome_projeto)) {
-            return 1;
-        } else {
-            //std::cout << std::format("{}SUCESSO{}", Cores::GREEN, Cores::RESET) << '\n';
-            InterfaceSucesso::exibir_sucesso(std::format("Pasta \"{}\" criada com sucesso.", nome_projeto));
-            return 0;
-        }
-        
+    // 3 - Cria diretório raiz
+    if (!criarDiretorioRaiz(nome_projeto)) {
+        std::cin.ignore();
+        return 1;
+    }
 
-        // 4 - Cria subpastas
-        
+    // 4 - Cria subpastas
+    if (!criarAudioFiles(nome_projeto) ||
+        !criarSessionFiles(nome_projeto) ||
+        !criarBouncedFiles(nome_projeto)) {
+        std::cin.ignore();
+        return 1;
+    }
 
-        // 5 - gera "metadados.txt"
-        
+    // 5 - Gera "metadados.txt"
+    if (!criarMetadados(nome_projeto)) {
+        std::cin.ignore();
+        return 1;
+    }
 
-    }        
-
-    
+    // 6 - Exibe mensagem de sucesso
+    InterfaceSucesso::exibir_sucesso(std::format("Pasta \"{}\" criada com sucesso.", nome_projeto));
     
     std::cin.ignore();
+    return 0;
 }
 

@@ -4,26 +4,30 @@
 Script em **C++** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical e/ou Masterização.
 
 - **Padronização:** Mantém todos os seus projetos com a mesma anatomia.
-- **Rapidez:** Cria toda a hierarquia de diretórios em segundos.
+- **Rapidez:** Cria toda a hierarquia de diretórios em millisegundos.
 - **Flexibilidade:** Fácil de adaptar para o seu workflow pessoal.
 
 ---
 ## 2 - Estrutura do Projeto
-Atualmente, o repositório está organizado da seguinte forma:
+Atualmente, o **repositório** está organizado da seguinte forma:
 ```bash
 KB_LAB/
+├── .antigravity/
+│    ├── context           # Biblioteca de "conhecimento estendido" para consulta do agente.
+│    └── spec              # Regras de negócio e comportamento.
 │
-├── doc/             # Documentação do projeto
+├── .vscode/
+├── build/                 # Diretório gerado contendo o build do CMake
+├── doc/                   # Outras documentações do projeto
 │
-├── include/         # Arquivos de cabeçalho ( .h )
+├── include/               # Arquivos de cabeçalho ( .h )
+├── source/                # Arquivos de origem ( .cpp )
+├── tests/                 # Arquivos de testes
 │
-├── source/          # Arquivoc de origem ( .cpp )
-│
-├── tests/           # Arquivos de testes
-│
-├── CMakeLists.txt   # Arquvio de projeto e compilação
-│
-└── README.md        # Briefing do projeto
+├── CMakeLists.txt         # Arquivo de projeto e compilação
+├── cpp_bootstrap.ps1      # Script PowerShell auxiliar para bootstrap
+├── .gitignore
+└── README.md              # Briefing do projeto
 ```
 
 ---
@@ -49,6 +53,7 @@ KB_LAB/
 │
 └── 📄 metadados.txt               # Informações técnicas e créditos
 ```
+*OBS: os emojis usados nos nomes acima são para fins explicativos, e não serão impressos após a criação da pasta do projeto.*
 
 ---
 ## 4 - Estrutura do Arquivo de Metadados
@@ -160,6 +165,31 @@ Isso mantém o histórico limpo, legível e profissional.
 
 | Ferramentas | Versão |
 | ----------- | ------ |
-| C++         | 20     |
+| C++         | 23     |
 | Git         | 2.x    |
+| CMake       | 3.20+  |
+
+---
+## 8 - Como Compilar e Executar
+
+Este projeto utiliza **CMake** como sistema de build. 
+
+### Para compilar o projeto:
+```bash
+# 1. Crie e acesse o diretório de build
+mkdir build && cd build
+
+# 2. Configure o projeto
+cmake ..
+
+# 3. Compile o executável
+cmake --build .
+```
+
+### Para executar:
+O `CMakeLists.txt` já possui um target especial para rodar a aplicação:
+```bash
+cmake --build . --target run
+```
+*No Windows, isso abrirá um novo terminal e manterá a janela aberta após a execução.*
 
