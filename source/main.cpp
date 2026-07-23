@@ -32,13 +32,13 @@ int main() {
 
     // 2 - Valida nome do projeto
     if (!validar_nomeProjeto(nome_projeto)) {
-        std::cin.ignore();
+        // std::cin.ignore();
         return 1;
     }
 
     // 3 - Cria diretório raiz
     if (!criarDiretorioRaiz(nome_projeto)) {
-        std::cin.ignore();
+        // std::cin.ignore();
         return 1;
     }
 
@@ -46,13 +46,13 @@ int main() {
     if (!criarAudioFiles(nome_projeto) ||
         !criarSessionFiles(nome_projeto) ||
         !criarBouncedFiles(nome_projeto)) {
-        std::cin.ignore();
+        // std::cin.ignore();
         return 1;
     }
 
     // 5 - Gera "metadados.txt"
     if (!criarMetadados(nome_projeto)) {
-        std::cin.ignore();
+        // std::cin.ignore();
         return 1;
     }
 

@@ -11,14 +11,17 @@
             "id": "43324f1942bcd3b7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "markdown/stage_development.MD",
-                "mode": "source",
-                "source": false
+                "file": "diagramas/v1.0.0/canvas/v1.0.0.canvas",
+                "viewState": {
+                  "x": 1876.823293663404,
+                  "y": -262.64227613310914,
+                  "zoom": -1.9999999999999993
+                }
               },
-              "icon": "lucide-file",
-              "title": "stage_development"
+              "icon": "lucide-layout-dashboard",
+              "title": "v1.0.0"
             }
           }
         ]
@@ -186,6 +189,16 @@
   },
   "active": "43324f1942bcd3b7",
   "lastOpenFiles": [
+    "diagramas/v1.0.0/canvas",
+    "diagramas/v1.0.0/pdf",
+    "diagramas/v1.0.0",
+    "todo/stage_development.MD",
+    "diagramas/v1.0.0/canvas/v1.0.0.canvas",
+    "diagrama/v1.0.0/Sem título.canvas",
+    "diagramas/v1.0.0",
+    "diagramas",
+    "todo/feedback_2.md",
+    "todo/feedback_1.md",
     "markdown/ROADMAP.md",
     "README.md",
     "source/main.py",
@@ -194,8 +207,6 @@
     "pdf/fluxograma_projetos_musicais.pdf",
     "Bem-vindo.md",
     "projects/fluxograma_kbelx.vsdx",
-    "projects",
-    "pdf",
-    "markdown"
+    "projects"
   ]
 }

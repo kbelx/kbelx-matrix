@@ -1,0 +1,25 @@
+{
+	"nodes":[
+		{"id":"2ce3b662aae6bdf4","x":360,"y":-1400,"width":2920,"height":2840,"type":"group","label":"Aplicação Principal"},
+		{"id":"dd34e0bd8aac1c69","x":1820,"y":-680,"width":1380,"height":1717,"type":"group","label":"Grupo sem título"},
+		{"id":"16b988f302b02df4","x":440,"y":-680,"width":1180,"height":1717,"color":"4","type":"group","label":"Caso o nome seja válido..."},
+		{"id":"b24a6fa016cf3f4e","x":-280,"y":-657,"width":301,"height":154,"type":"text","text":"## `solicitarNomeProjeto()`\n---\n  \nSolicita um nome para o usuário"},
+		{"id":"77664f3e6a4c2ae7","x":1440,"y":-1320,"width":612,"height":275,"type":"text","text":"## `std::string nome_projeto { solicitarNomeProjeto() }`\n---\nCaptura o retorno da função `solicitarNomeProjeto()` numa variável do tipo string.\n\nEssa variável será usada para criar todo o sistema. Sem essa variável, **NADA** funciona."},
+		{"id":"568b2228f8315f3a","x":1440,"y":-960,"width":612,"height":160,"type":"text","text":"## `validar_nomeProjeto(nome_projeto)`\n---\nValida o nome do projeto usando funções validadoras"},
+		{"id":"01a6a26c8d9cc5c7","type":"text","text":"## `criarSessionFiles(nome_projeto)`\n---\nCria a pasta SESSION_FILES e suas subpastas. no fim, adiciona elas a pasta raiz.","x":860,"y":0,"width":612,"height":160},
+		{"id":"478c9d12d7370382","type":"text","text":"## `criarBouncedFiles(nome_projeto)`\n---\nCria a pasta BOUNCED_FILES e suas subpastas. no fim, adiciona elas a pasta raiz.","x":860,"y":200,"width":612,"height":180},
+		{"id":"89d0cc241860170d","x":860,"y":420,"width":612,"height":260,"type":"text","text":"## `criarMetadados(nome_projeto)`\n---\n\nCria um metadado, um arquivo `.txt` que informa os dados envolvendo a música.\n\nO metado foi pensado para aqueles que usam DAW ( _Digital Audio Workstation_ ) que não possuem criação desse tipo de arquivo, ou para aqueles que usam 98,99% de equipamentos analógicos."},
+		{"id":"b4cf1f464889d141","x":480,"y":757,"width":1092,"height":203,"type":"text","text":"## `InterfaceSucesso::exibir_sucesso(std::format(\"Pasta \\\"{}\\\" criada com sucesso.\", nome_projeto)`\n---\nExibe uma mensagem, indicado que a operação foi um sucesso. \n\nEssa mensagem usa uma API do Sistema Operacional do usuário."},
+		{"id":"667d9c8dde64d3a6","x":720,"y":-600,"width":612,"height":246,"type":"text","text":"## `criarDiretorioRaiz(nome_projeto)`\n---\nCria o **DIRETÓRIO RAIZ**, que é a pasta principal. essa pasta será nomeada com o nome fornecido pelo usuário. "},
+		{"id":"74417bac3dbc71cc","type":"text","text":"## `criarAudioFiles(nome_projeto)`\n---\nCria a pasta AUDIO_FILES e suas subpastas. no fim, adiciona elas a pasta raiz.","x":860,"y":-200,"width":612,"height":160}
+	],
+	"edges":[
+		{"id":"fb5847588bce1b6d","fromNode":"77664f3e6a4c2ae7","fromSide":"bottom","toNode":"568b2228f8315f3a","toSide":"top"},
+		{"id":"9780a1253eabb895","fromNode":"01a6a26c8d9cc5c7","fromSide":"right","toNode":"478c9d12d7370382","toSide":"right"},
+		{"id":"9febbbc582fcc36a","fromNode":"478c9d12d7370382","fromSide":"left","toNode":"89d0cc241860170d","toSide":"left"},
+		{"id":"7167304f081ec7fc","fromNode":"89d0cc241860170d","fromSide":"bottom","toNode":"b4cf1f464889d141","toSide":"top"},
+		{"id":"51b1bb869d31ad9e","fromNode":"74417bac3dbc71cc","fromSide":"left","toNode":"01a6a26c8d9cc5c7","toSide":"left"},
+		{"id":"e6bfd546cbdf9eff","fromNode":"667d9c8dde64d3a6","fromSide":"bottom","toNode":"74417bac3dbc71cc","toSide":"top"},
+		{"id":"35fa310b3999e535","fromNode":"568b2228f8315f3a","fromSide":"left","toNode":"16b988f302b02df4","toSide":"top","color":"3"}
+	]
+}
