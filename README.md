@@ -1,5 +1,7 @@
 # KB_LAB
 
+## [![Download](https://img.shields.io/badge/DOWNLOAD-KBLAB-white?style=flat-square&logo=archive&logoColor=white)](https://github.com/kbelx/KB_LAB/releases/seu-arquivo.zip)
+
 ## 1 - Funcionalidades
 Script em **C++** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical e/ou Masterização.
 
