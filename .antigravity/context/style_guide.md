@@ -26,3 +26,17 @@
 - Evitar uso de exceções (`try-catch`) para fluxos de validação e sistema de arquivos.
 - Retornar `bool` para indicar sucesso ou fracasso (ex: `bool criarDiretorioRaiz`).
 - Utilizar `std::error_code` da biblioteca `<system_error>` para validar chamadas de sistema (como criação de pastas no `std::filesystem`) sem lançar exceções.
+
+## 6. Política Obrigatória de Versionamento e Tags Git (SemVer)
+- **Obrigatoriedade**: Toda entrega concluída e estável na branch `main` ou marco significativo de evolução DEVE obrigatoriamente receber uma **Git Tag** de versão anotada seguindo o padrão SemVer (`vX.Y.Z`).
+- **Nomenclatura da Tag**: Sempre usar o prefixo minúsculo `v` seguido de Major.Minor.Patch (ex: `v1.0.0`, `v1.0.1`, `v1.1.0`).
+  - **Major (`vX.0.0`)**: Mudanças estruturais profundas que quebram contratos, alterações no CLI de impacto incompatível ou reestruturações completas.
+  - **Minor (`v1.X.0`)**: Novas funcionalidades, evolução da suíte, rebrandings/renomeações de projeto/target mantendo as regras de negócio essenciais.
+  - **Patch (`v1.0.X`)**: Correções de bugs, ajustes de validações, melhorias em mensagens/logs e refinamentos de documentação.
+- **Comando de Criação e Envio**:
+  ```bash
+  git tag -a vX.Y.Z -m "vX.Y.Z - Descrição clara do marco alcançado"
+  git push origin --tags
+  ```
+- **Regra do Agente**: Sempre que o agente Antigravity finalizar uma entrega, merge para `main` ou release, ele deve verificar a necessidade de incrementar e aplicar a tag de versão correspondente.
+

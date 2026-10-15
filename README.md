@@ -127,7 +127,7 @@ Criar uma ``docs/branch`` separada tende a:
 ---
 ## 5.3 - Fluxo de Trabalho
 ```BASH
-main
+main (com tags vX.Y.Z)
   ↑
  dev
   ↑
@@ -136,11 +136,17 @@ feature/x
 
 1. Criar branch a partir de ``dev``
 
-2. Desenvolver
+2. Desenvolver e versionar alterações
 
 3. Merge em ``dev``
 
 4. Quando estiver estável → merge ``dev`` → ``main``
+
+5. **Criar Tag de Versão (Obrigatório):**
+   ```bash
+   git tag -a vX.Y.Z -m "vX.Y.Z - descrição do marco"
+   git push origin main --tags
+   ```
 
 ---
 ## 6 - Organização de Commits
