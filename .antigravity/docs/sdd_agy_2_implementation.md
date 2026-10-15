@@ -1,6 +1,6 @@
 # Relatório de Implementação: SDD_AGY_2
 
-Em conformidade com os requisitos especificados em `.antigravity/sdd/sdd_agy_2.md`, as seguintes pastas e arquivos foram devidamente provisionados e estruturados com base na análise aprofundada do código atual (C++23, CMake) do projeto **KB_LAB**.
+Em conformidade com os requisitos especificados em `.antigravity/sdd/sdd_agy_2.md`, as seguintes pastas e arquivos foram devidamente provisionados e estruturados com base na análise aprofundada do código atual (C++23, CMake) do projeto **kbelx-matrix**.
 
 ## 1. Contexto (.antigravity/context)
 Os seguintes arquivos receberam as informações técnicas pertinentes ao ecossistema atual do projeto:

@@ -112,8 +112,8 @@ void exibirMensagemValidacao(std::string_view SO, bool sucesso){
     SetConsoleOutputCP(CP_UTF8);
     #endif
     
-    std::string linha1_pura { std::format("Sistema Operacional: {}...", SO) };
-    std::string linha1_colorida { std::format("Sistema Operacional: {}{}{}...", Cores::CYAN, SO, Cores::RESET) };
+    std::string linha1_pura { std::format("Sistema Operacional: {}", SO) };
+    std::string linha1_colorida { std::format("Sistema Operacional: {}{}{}", Cores::CYAN, SO, Cores::RESET) };
     
     std::string str_status = (sucesso ? "Status: SUCESSO" : "Status: ERRO");
 
@@ -142,8 +142,24 @@ void exibirMensagemValidacao(std::string_view SO, bool sucesso){
 
 bool validar_nomeProjeto(std::string_view nome) {
     bool nome_valido { true };
+    
+    /*
+    AUTOR: Bruno Costa
+    DATA: 22 de Julho de 2026
+    DESCRIÇÃO: EXPLICAÇÃO SOBRE O PORQUE DAS VALIDAÇÕES ESTAREM "DUPLICADAS"
 
-    // Executar validações silenciosamente primeiro para definir o status da moldura
+    Fiz uma função onde exibe uma moldura, indicando o status do:
+    - Sistema Operacionald o User;
+    - Se a operação foi um sucesso.
+
+    Como eu queria definir o status da moldura, eu tive que validar silenciosa
+    -mente primeiro.
+
+    Talvez, no futuro, eu deixe isso mais legível...
+    ( tenho andado meio atarefado)
+    */
+    
+    #if 1
     if (validar_nomeVazio(nome)) {
         nome_valido = false;
 
@@ -161,14 +177,15 @@ bool validar_nomeProjeto(std::string_view nome) {
             nome_valido = false;
         }
     }
-
+    # endif
+    
     exibirMensagemValidacao(SistemaOperacional::NOME, nome_valido);
 
     if (validar_nomeVazio(nome)) {
         InterfaceErro::exibir_erro("Nome do projeto NÃO PODE estar vazio!");
         return false;
     }
-
+    
     if constexpr (SistemaOperacional::WINDOWS) {
         if (validar_CharsProibidosWindows(nome)) {
             InterfaceErro::exibir_erro(std::format(
@@ -177,11 +194,11 @@ bool validar_nomeProjeto(std::string_view nome) {
                 Proibidos::CARACTERES_WINDOWS
             ));
         }
-
+        
         if (validar_finalInvalidoWindows(nome)) {
             InterfaceErro::exibir_erro("Nome do projeto NÃO PODE começar ou terminar com espaço ou ponto no Windows.");
         }
-
+        
         if (validar_nomeReservadoWindows(nome)) {
             InterfaceErro::exibir_erro(
                 "Nome do projeto NÃO PODE usar nome reservado do Windows.\n\n"
@@ -193,10 +210,10 @@ bool validar_nomeProjeto(std::string_view nome) {
             InterfaceErro::exibir_erro("Nome do projeto NÃO PODE conter '/' ou caractere nulo neste sistema.");
         }
     }
-
+    
     if (nome_valido && contem_caractere_controle(nome)) {
         InterfaceErro::exibir_erro("Nome do projeto NÃO PODE conter caracteres de controle.");
     }
-
+    
     return nome_valido;
 }

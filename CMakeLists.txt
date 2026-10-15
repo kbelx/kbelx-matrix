@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 3.20)
 # ------------------------------------------------------------------------------
 # Nome do projeto e linguagem utilizada.
 # O nome do executável final será o mesmo do projeto.
-project(KB_LAB LANGUAGES CXX)
+project(kbelx-matrix LANGUAGES CXX)
 
 #═══════════════════════════════════════════════════════════════════════════════
 # 🔢 CONFIGURAÇÕES DA LINGUAGEM C++

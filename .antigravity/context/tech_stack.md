@@ -1,4 +1,4 @@
-# Tech Stack - KB_LAB
+# Tech Stack - kbelx-matrix
 
 ## Linguagem Principal
 - **C++23**
