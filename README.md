@@ -2,6 +2,8 @@
 
 > Matriz arquitetural de geração de sessões de áudio para o universo sonoro **kbelx_** (Knowledge, Balance, Efficiency, Learning, eXperience).
 
+[![Releases](https://img.shields.io/badge/Releases-kbelx%2Fkbelx--matrix-white?style=flat-square&logo=github&logoColor=black&labelColor=f5f5f5)](https://github.com/kbelx/kbelx-matrix/releases)
+
 ## 1 - Funcionalidades
 Script em **C++** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical e/ou Masterização.
 
