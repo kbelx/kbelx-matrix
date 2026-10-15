@@ -1,4 +1,4 @@
-# Project Roadmap - KB_LAB
+# Project Roadmap - kbelx-matrix
 
 ## Fase Atual: 1.0 - Estrutura Base e Validações
 - [x] Inicialização do repositório.

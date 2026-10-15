@@ -1,4 +1,4 @@
-# Casos de Teste - KB_LAB
+# Casos de Teste - kbelx-matrix
 
 O agente deverá garantir a aprovação dos seguintes testes antes de finalizar novas entregas:
 

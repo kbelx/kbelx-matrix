@@ -1,4 +1,6 @@
-# KB_LAB
+# kbelx-matrix
+
+> Matriz arquitetural de geração de sessões de áudio para o universo sonoro **kbelx_** (Knowledge, Balance, Efficiency, Learning, eXperience).
 
 ## 1 - Funcionalidades
 Script em **C++** para automatizar a criação da estrutura de pastas de novos projetos de Mixagem, Produção Musical e/ou Masterização.
@@ -11,7 +13,7 @@ Script em **C++** para automatizar a criação da estrutura de pastas de novos p
 ## 2 - Estrutura do Projeto
 Atualmente, o **repositório** está organizado da seguinte forma:
 ```bash
-KB_LAB/
+kbelx-matrix/
 ├── .antigravity/
 │    ├── context           # Biblioteca de "conhecimento estendido" para consulta do agente.
 │    └── spec              # Regras de negócio e comportamento.

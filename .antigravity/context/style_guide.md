@@ -1,4 +1,4 @@
-# Style Guide - KB_LAB
+# Style Guide - kbelx-matrix
 
 ## 1. Padrão da Linguagem
 - **C++23** (`CMAKE_CXX_STANDARD 23`).

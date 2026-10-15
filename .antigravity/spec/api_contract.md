@@ -1,4 +1,4 @@
-# API Contract - KB_LAB
+# API Contract - kbelx-matrix
 
 ## Interação com CLI (Main Flow)
 
@@ -6,7 +6,7 @@ O projeto age como um CLI simples de única interação.
 
 **Comando de Execução:**
 ```bash
-./KB_LAB
+./kbelx-matrix
 ```
 
 **Esquema de Respostas (I/O)**:

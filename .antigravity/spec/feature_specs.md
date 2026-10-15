@@ -1,4 +1,4 @@
-# Especificações de Funcionalidades - KB_LAB
+# Especificações de Funcionalidades - kbelx-matrix
 
 ## Feature: Geração da Estrutura de Pastas
 - **Input**: Um nome de projeto em formato de `std::string` obtido via `std::cin`.
